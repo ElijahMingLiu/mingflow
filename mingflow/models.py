@@ -24,7 +24,13 @@ class XgbWrapper(object):
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
-
+        
+        del_cols = [
+            'num_boost_round',
+            'early_stopping_rounds',
+            'verbose_eval'
+        ]
+        
         for del_col in del_cols:
             if del_col in self.params.keys():
                 del self.params[del_col]
@@ -56,6 +62,12 @@ class XgbWrapper(object):
         else:
             kf = StratifiedKFold(n_splits = nfolds, shuffle=True, random_state=seed)
         
+        del_cols = [
+            'num_boost_round',
+            'early_stopping_rounds',
+            'verbose_eval'
+        ]
+                
         
         for del_col in del_cols:
             if del_col in params.keys():
@@ -95,12 +107,17 @@ class LightGBMWrapper(object):
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
-
+        
+        del_cols = [
+            'num_boost_round',
+            'early_stopping_rounds',
+            'verbose_eval'
+        ]
+        
         for del_col in del_cols:
             if del_col in self.params.keys():
                 del self.params[del_col]
-        
-        
+
         self.clf = lgb.train(params=self.params, 
                          train_set=lgb_train,
                          valid_sets=[lgb_train, lgb_valid],
@@ -129,6 +146,12 @@ class LightGBMWrapper(object):
             kf = KFold(n_splits = nfolds, shuffle=True, random_state=seed)
         else:
             kf = StratifiedKFold(n_splits = nfolds, shuffle=True, random_state=seed)
+        
+        del_cols = [
+            'num_boost_round',
+            'early_stopping_rounds',
+            'verbose_eval'
+        ]        
         
         for del_col in del_cols:
             if del_col in params.keys():
@@ -166,7 +189,13 @@ class CatboostWrapper(object):
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
-
+        
+        del_cols = [
+            'num_boost_round',
+            'early_stopping_rounds',
+            'verbose_eval'
+        ]
+        
         for del_col in del_cols:
             if del_col in self.params.keys():
                 del self.params[del_col]
