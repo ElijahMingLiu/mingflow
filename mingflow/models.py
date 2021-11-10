@@ -42,7 +42,10 @@ class XgbWrapper(object):
                       verbose_eval=verbose_eval,
                       early_stopping_rounds=early_stopping_rounds,
                    )
-
+        self.params['num_boost_round'] = num_boost_round
+        self.params['early_stopping_rounds'] = early_stopping_rounds
+        self.params['verbose_eval'] = verbose_eval
+        
     def predict(self, x):
         return self.clf.predict(xgb.DMatrix(x))
     
@@ -81,6 +84,12 @@ class XgbWrapper(object):
              verbose_eval=verbose_eval, 
              show_stdv=show_stdv,  # 显示metric的标准差
              seed=seed)
+        
+        params['num_boost_round'] = num_boost_round
+        params['early_stopping_rounds'] = early_stopping_rounds
+        params['verbose_eval'] = verbose_eval
+        
+        
         if get_best:
             
             col = [col for col in history.columns if 'mean' in col and 'test' in col][0]
@@ -125,6 +134,9 @@ class LightGBMWrapper(object):
                          verbose_eval=verbose_eval,
                          early_stopping_rounds=early_stopping_rounds,
                         )
+        self.params['num_boost_round'] = num_boost_round
+        self.params['early_stopping_rounds'] = early_stopping_rounds
+        self.params['verbose_eval'] = verbose_eval
         
     def predict(self, x):
         return self.clf.predict(x)
@@ -165,6 +177,10 @@ class LightGBMWrapper(object):
              verbose_eval=verbose_eval, 
              show_stdv=show_stdv,  # 显示metric的标准差
              seed=seed)
+        
+        params['num_boost_round'] = num_boost_round
+        params['early_stopping_rounds'] = early_stopping_rounds
+        params['verbose_eval'] = verbose_eval
         
         if get_best:
             
@@ -207,7 +223,10 @@ class CatboostWrapper(object):
                             early_stopping_rounds=early_stopping_rounds,
                             verbose=verbose
                            )
-    
+        self.params['num_boost_round'] = num_boost_round
+        self.params['early_stopping_rounds'] = early_stopping_rounds
+        self.params['verbose_eval'] = verbose_eval
+        
     def predict(self, x):
         return self.clf.predict(x)
     
