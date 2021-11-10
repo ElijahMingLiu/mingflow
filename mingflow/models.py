@@ -44,9 +44,9 @@ class XgbWrapper(object):
         
         data_train = xgb.DMatrix(X, label=y)  
         
-        num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
-        early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
-        verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
+        num_boost_round = params['num_boost_round'] if 'num_boost_round' in params.keys() else num_boost_round
+        early_stopping_rounds = params['early_stopping_rounds'] if 'early_stopping_rounds' in params.keys() else early_stopping_rounds
+        verbose_eval = params['verbose_eval'] if 'verbose_eval' in params.keys() else verbose_eval
         
         if kf_type == 'kf':
             kf = KFold(n_splits = nfolds, shuffle=True, random_state=seed)
@@ -106,9 +106,9 @@ class LightGBMWrapper(object):
         
         data_train = lgb.Dataset(X, y)  
         
-        num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
-        early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
-        verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
+        num_boost_round = params['num_boost_round'] if 'num_boost_round' in params.keys() else num_boost_round
+        early_stopping_rounds = params['early_stopping_rounds'] if 'early_stopping_rounds' in params.keys() else early_stopping_rounds
+        verbose_eval = params['verbose_eval'] if 'verbose_eval' in params.keys() else verbose_eval
         
         
         if kf_type == 'kf':
