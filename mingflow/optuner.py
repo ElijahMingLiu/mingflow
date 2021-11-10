@@ -24,7 +24,7 @@ class Optuner:
             **kwargs
         ):
             params = get_params_func(trial)
-            best_score = model_wrapper.cv(X, y, params, get_best=True, direction=direction)
+            best_score = model_wrapper.cv(X, y, params, get_best=True, direction=direction,**kwargs)
             return best_score
 
         return objective

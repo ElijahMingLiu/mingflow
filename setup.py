@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mingflow',
-    version='0.0.1',
+    version='0.0.2',
     description='Just wanna make your ML easier',
     licenes='MIT',
     # packages就是包括的文件夹

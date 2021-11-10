@@ -42,7 +42,7 @@ class BasicOOF:
         
         self.oof_train = oof_train.reshape(-1, 1)
         self.oof_test = oof_test.reshape(-1, 1)
-
+        
         return oof_train.reshape(-1, 1), oof_test.reshape(-1, 1)
 
 class StackingLogisticRegressionModel:
