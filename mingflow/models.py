@@ -12,7 +12,7 @@ from sklearn.model_selection import KFold, StratifiedKFold
 # from sklearn.linear_model import LogisticRegression
 
 class XgbWrapper(object):
-    def __init__(self, seed=0, params={}):
+    def __init__(self, params={}, seed=0):
         self.params = params
         self.params['seed'] = seed
         
@@ -94,7 +94,7 @@ class XgbWrapper(object):
         return history
     
 class LightGBMWrapper(object):
-    def __init__(self, seed=0, params={}):
+    def __init__(self, params={}, seed=0):
         params['feature_fraction_seed'] = seed
         params['bagging_seed'] = seed
         self.params = params
@@ -179,7 +179,7 @@ class LightGBMWrapper(object):
         return history
 
 class CatboostWrapper(object):
-    def __init__(self, seed=0, params={}):
+    def __init__(self, params={}, seed=0):
         params['random_seed'] = seed
         self.params = params
     def train(self, X_train, y_train, X_val, y_val, num_boost_round=100000, early_stopping_rounds=100, verbose=100):
