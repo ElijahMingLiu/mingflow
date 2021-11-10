@@ -90,7 +90,7 @@ class LightGBMWrapper(object):
         self.clf = lgb.train(params=self.params, 
                          train_set=lgb_train,
                          valid_sets=[lgb_train, lgb_valid],
-                         num_boost_round=num_boost_round
+                         num_boost_round=num_boost_round,
                          verbose_eval=verbose_eval,
                          early_stopping_rounds=early_stopping_rounds,
                         )
