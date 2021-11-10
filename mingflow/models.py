@@ -204,12 +204,12 @@ class CatboostWrapper(object):
         
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
-        verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
+        verbose = self.params['verbose'] if 'verbose' in self.params.keys() else verbose
         
         del_cols = [
             'num_boost_round',
             'early_stopping_rounds',
-            'verbose_eval'
+            'verbose'
         ]
         
         for del_col in del_cols:
@@ -225,7 +225,7 @@ class CatboostWrapper(object):
                            )
         self.params['num_boost_round'] = num_boost_round
         self.params['early_stopping_rounds'] = early_stopping_rounds
-        self.params['verbose_eval'] = verbose_eval
+        self.params['verbose'] = verbose
         
     def predict(self, x):
         return self.clf.predict(x)
