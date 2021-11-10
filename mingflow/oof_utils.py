@@ -20,7 +20,7 @@ class BasicOOF:
         else:
             self.kf = StratifiedKFold(n_splits = self.nfolds, shuffle=True, random_state=self.seed)
     
-    def get_oof(self, X_train, y_train, X_test,**kwargs):
+    def get_oof(self, X_train, y_train, X_test):
         oof_train = np.zeros((len(X_train),))
         oof_test = np.zeros((len(X_test),))
         oof_test_kf = np.empty((self.nfolds, len(X_test)))
