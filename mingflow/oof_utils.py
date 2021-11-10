@@ -30,7 +30,7 @@ class BasicOOF:
             X_tr, X_val = X_train.loc[train_index], X_train.loc[val_index]
             y_tr, y_val = y_train.loc[train_index], y_train.loc[val_index]
             
-            self.clf.train(X_tr, y_tr, X_val, y_val, **kwargs)
+            self.clf.train(X_tr, y_tr, X_val, y_val)
             if self.predict_proba:
                 oof_train[val_index] = self.clf.predict_proba(X_val)
                 oof_test_kf[i, :] = self.clf.predict_proba(X_test)
