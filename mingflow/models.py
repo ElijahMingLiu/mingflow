@@ -25,9 +25,9 @@ class XgbWrapper(object):
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
         try:
-            del self.params[num_boost_round]
-            del self.params[early_stopping_rounds]
-            del self.params[verbose_eval]
+            del self.params['num_boost_round']
+            del self.params['early_stopping_rounds']
+            del self.params['verbose_eval']
         except:
             pass
         self.clf = xgb.train(params=self.params, 
@@ -59,9 +59,9 @@ class XgbWrapper(object):
         
         
         try:
-            del params[num_boost_round]
-            del params[early_stopping_rounds]
-            del params[verbose_eval]
+            del params['num_boost_round']
+            del params['early_stopping_rounds']
+            del params['verbose_eval']
         except:
             pass
         
@@ -100,9 +100,9 @@ class LightGBMWrapper(object):
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
 
         try:
-            del self.params[num_boost_round]
-            del self.params[early_stopping_rounds]
-            del self.params[verbose_eval]
+            del self.params['num_boost_round']
+            del self.params['early_stopping_rounds']
+            del self.params['verbose_eval']
         except:
             pass
         
@@ -136,9 +136,9 @@ class LightGBMWrapper(object):
             kf = StratifiedKFold(n_splits = nfolds, shuffle=True, random_state=seed)
         
         try:
-            del params[num_boost_round]
-            del params[early_stopping_rounds]
-            del params[verbose_eval]
+            del params['num_boost_round']
+            del params['early_stopping_rounds']
+            del params['verbose_eval']
         except:
             pass
         
@@ -174,9 +174,9 @@ class CatboostWrapper(object):
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
         try:
-            del self.params[num_boost_round]
-            del self.params[early_stopping_rounds]
-            del self.params[verbose_eval]
+            del self.params['num_boost_round']
+            del self.params['early_stopping_rounds']
+            del self.params['verbose_eval']
         except:
             pass
         
