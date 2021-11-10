@@ -24,8 +24,12 @@ class XgbWrapper(object):
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
-        
-        
+        try:
+            del self.params[num_boost_round]
+            del self.params[early_stopping_rounds]
+            del self.params[verbose_eval]
+        except:
+            pass
         self.clf = xgb.train(params=self.params, 
                       dtrain=xgb_train,
                       evals=[(xgb_train, 'train'), (xgb_valid, 'valid')],
@@ -52,6 +56,14 @@ class XgbWrapper(object):
             kf = KFold(n_splits = nfolds, shuffle=True, random_state=seed)
         else:
             kf = StratifiedKFold(n_splits = nfolds, shuffle=True, random_state=seed)
+        
+        
+        try:
+            del params[num_boost_round]
+            del params[early_stopping_rounds]
+            del params[verbose_eval]
+        except:
+            pass
         
         history = xgb.cv(params, data_train, 
              num_boost_round=num_boost_round, 
@@ -86,6 +98,13 @@ class LightGBMWrapper(object):
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
+
+        try:
+            del self.params[num_boost_round]
+            del self.params[early_stopping_rounds]
+            del self.params[verbose_eval]
+        except:
+            pass
         
         self.clf = lgb.train(params=self.params, 
                          train_set=lgb_train,
@@ -115,6 +134,13 @@ class LightGBMWrapper(object):
             kf = KFold(n_splits = nfolds, shuffle=True, random_state=seed)
         else:
             kf = StratifiedKFold(n_splits = nfolds, shuffle=True, random_state=seed)
+        
+        try:
+            del params[num_boost_round]
+            del params[early_stopping_rounds]
+            del params[verbose_eval]
+        except:
+            pass
         
         history = lgb.cv(params, data_train, 
              num_boost_round=num_boost_round, 
@@ -147,6 +173,12 @@ class CatboostWrapper(object):
         num_boost_round = self.params['num_boost_round'] if 'num_boost_round' in self.params.keys() else num_boost_round
         early_stopping_rounds = self.params['early_stopping_rounds'] if 'early_stopping_rounds' in self.params.keys() else early_stopping_rounds
         verbose_eval = self.params['verbose_eval'] if 'verbose_eval' in self.params.keys() else verbose_eval
+        try:
+            del self.params[num_boost_round]
+            del self.params[early_stopping_rounds]
+            del self.params[verbose_eval]
+        except:
+            pass
         
         self.clf = cb.train(dtrain=cb_train, 
                             params=self.params, 
